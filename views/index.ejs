@@ -12,7 +12,7 @@
           <% for( let index = 0; index < blogEntries.length; index++ ) { %>
 
           <li class="list-group-item">
-            <a href="/read?p=<%= index %>">
+            <a href="/read?id=<%= index %>">
               <%= blogEntries[index]['title'] %>
             </a>
             <p>by <%= blogEntries[index]['author'] %></p>

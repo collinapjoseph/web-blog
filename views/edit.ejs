@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <%- include('partials/head.ejs') %>
+  <body>
+    <%- include('partials/header.ejs') %>
+    <main>
+      <div class="container">
+        <h1 class="mb-3">Edit Your Blog Entry.</h1>
+
+        <form action="/update<%= entryId %>" method="POST">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              name="title"
+              value="<%= blogEntry['title'] %>" />
+          </div>
+
+          <div class="mb-3">
+            <label for="author" class="form-label">Author</label>
+            <input
+              type="text"
+              class="form-control"
+              name="author"
+              value="<%= blogEntry['author'] %>" />
+          </div>
+
+          <div class="mb-3">
+            <label for="content" class="form-label">Blog Entry</label>
+            <textarea
+              name="content"
+              id="content"
+              type="text"
+              class="form-control">
+              <%= blogEntry['content'] %>
+            </textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </main>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>

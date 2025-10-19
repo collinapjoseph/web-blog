@@ -4,23 +4,31 @@
   <body>
     <%- include('partials/header.ejs') %>
     <main>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <p class="h1"><%= blogEntry['title'] %></p>
-                    <p>by <%= blogEntry['author'] %></p>
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-outline-secondary read-btn">Edit</button>
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-outline-secondary read-btn">Delete</button>
-                </div>
-            </div>
-            <p><%= blogEntry['content'] %></p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <p class="h1"><%= blogEntry['title'] %></p>
+            <p>by <%= blogEntry['author'] %></p>
+          </div>
+          <div class="col-md-2">
+            <a
+              href="/edit?id=<%= entryId %>"
+              class="btn btn-outline-secondary read-btn">
+              Edit
+            </a>
+          </div>
+          <div class="col-md-2">
+            <button
+              type="button"
+              class="btn btn-outline-secondary read-btn"
+              id="delete-btn"
+              data-item-id="<%= entryId %>">
+              Delete
+            </button>
+          </div>
         </div>
-
+        <p><%= blogEntry['content'] %></p>
+      </div>
     </main>
     <%- include('partials/footer.ejs') %>
   </body>

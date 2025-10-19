@@ -4,8 +4,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const __blogDataFilePath = `${__dirname}/blogEntries-samples.json`;
-// const __blogEntriesFilePath = `${__dirname}/blogEntries.json`;
+const __blogDataFilePath = `${__dirname}/blogEntries.json`;
 const app = express();
 const port = 3000;
 
@@ -20,33 +19,48 @@ app.get("/", (req, res)=>{
 });
 
 app.get("/read", (req, res)=>{
-    var id = req.query['p']
-    console.log(id);
-    // access blog entry
+    var id = req.query['id']
     var entry = blogData['entries'][id]
-    // display to client
-    res.render("read.ejs", {blogEntry:entry});
+    res.render("read.ejs", {blogEntry:entry, entryId:id});
 });
 
 app.get("/write", (req, res)=>{
     res.render("write.ejs");
 });
 
-app.delete("/", (req, res)=>{
-    // remove item from blogEntries
-    // save blogEntries
-    saveBlogEntries(blogData);
-    // confirm deleted
-    // redirect/reload home
-});
-
 app.post("/submit", (req, res)=>{
     var newEntry = req.body;
-    newEntry['id'] = getNewEntryID();
     blogData['entries'].push(newEntry);
     saveBlogEntries(blogData);
     res.redirect("/");
+    console.log("Created entry:", newEntry['title'], "by", newEntry['author']);
 });
+
+app.get("/edit", (req, res)=>{
+    var id = req.query['id'];
+    var entry = blogData['entries'][id]
+    res.render("edit.ejs", {blogEntry:entry, entryId:id});
+    console.log("Edit entry:", entry['title'], "by", entry['author']);
+});
+
+app.post("/update:id", (req, res)=>{
+    var id = req.params.id;
+    var newEntry = req.body;
+    blogData['entries'][id] = newEntry;
+    saveBlogEntries(blogData);
+    res.redirect("/");
+    console.log("Update entry:", id);
+});
+
+app.delete("/:id", (req, res)=>{
+    var id = req.params.id;
+    var deletedItems = blogData['entries'].splice(id, 1);
+    saveBlogEntries(blogData);
+    res.sendStatus(200);
+    // res.redirect(200, "/");
+    console.log("Deleted entry:", deletedItems[0]['title'], 'by', deletedItems[0]['author']);
+});
+
 
 app.listen(port, (err)=>{
     if(err) throw err;
@@ -69,12 +83,4 @@ function loadBlogData(){
 
 function saveBlogEntries(data){
     fs.writeFileSync(__blogDataFilePath, JSON.stringify(data, null, 2), "utf-8");
-}
-
-function getNewEntryID(){
-    var maxId = 0;
-    for(var i=0;i<blogData.length;i++){
-        if(blogData[i]['id'] > maxId){ maxId = blogData[i]['id']; }
-    }
-    return maxId+1;
 }
