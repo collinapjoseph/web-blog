@@ -49,7 +49,7 @@ app.post("/update:id", (req, res)=>{
     blogData['entries'][id] = newEntry;
     saveBlogEntries(blogData);
     res.redirect("/");
-    console.log("Update entry:", id);
+    console.log("Updated entry:", id);
 });
 
 app.delete("/:id", (req, res)=>{
@@ -57,7 +57,6 @@ app.delete("/:id", (req, res)=>{
     var deletedItems = blogData['entries'].splice(id, 1);
     saveBlogEntries(blogData);
     res.sendStatus(200);
-    // res.redirect(200, "/");
     console.log("Deleted entry:", deletedItems[0]['title'], 'by', deletedItems[0]['author']);
 });
 
