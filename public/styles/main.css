@@ -1,0 +1,12 @@
+#content{
+    min-height: 100px;
+}
+ 
+.navbar-brand{
+    font-weight: bold;
+}
+
+.read-btn{
+    width: 100%;
+    min-width: min-content;
+}

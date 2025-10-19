@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+  <%- include('partials/head.ejs') %>
+  <body>
+    <%- include('partials/header.ejs') %>
+    <main>
+      <div class="container">
+        <p class="h1">Blog Entries</p>
+        <% if (blogEntries.length > 0) { %>
+
+        <ul class="list-group list-group-flush">
+          <% for( let index = 0; index < blogEntries.length; index++ ) { %>
+
+          <li class="list-group-item">
+            <a href="/read?p=<%= index %>">
+              <%= blogEntries[index]['title'] %>
+            </a>
+            <p>by <%= blogEntries[index]['author'] %></p>
+          </li>
+
+          <% } %>
+        </ul>
+
+        <% } else { %>
+        <p>No blog entries available. Click "Write" to add a new enrty.</p>
+        <% } %>
+      </div>
+    </main>
+    <%- include('partials/footer.ejs') %>
+  </body>
+</html>
