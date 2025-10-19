@@ -1,3 +1,3 @@
-#CJ Web Blog
+# CJ Web Blog
 
 Collin Joseph, 2025
