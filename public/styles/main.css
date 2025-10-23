@@ -10,3 +10,7 @@
     width: 100%;
     min-width: min-content;
 }
+
+.blog-content{
+    line-height: 1.75;
+}
