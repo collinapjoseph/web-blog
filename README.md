@@ -6,19 +6,20 @@
 ## Screenshots
 
 ![Screenshot of blog home page](screenshots/homepage.png "Blog Homepage")
-<center><b>Figure 1.</b> <i>Blog Homepage</i></center>
-<br>
+**Figure 1.** *Blog Homepage*
+<br/><br/>
 
 ![Screenshot of blog read page](screenshots/read-blog-entry.png "Read/View Page")
-<center><b>Figure 2.</b> <i>Read/View Page</i></center>
-<br>
+**Figure 2.** *Read/View Page*
+<br/><br/>
 
 ![Screenshot of blog write page](screenshots/write-blog-entry.png "Write/Create Page")
-<center><b>Figure 3.</b> <i>Write/Create Page</i></center>
-<br>
+**Figure 3.** *Write/Create Page*
+<br/><br/>
 
 ![Screenshot of blog edit page](screenshots/edit-blog-entry.png "Edit Page")
-<center><b>Figure 4.</b> <i>Edit Page</i></center>
+**Figure 4.** *Edit Page*
+<br/><br/>
 
 <hr>
 Collin Joseph, 2025
