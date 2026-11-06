@@ -1,6 +1,6 @@
 # CJ Web Blog
 
-**Author**: Collin Joseph
+**Author**: Collin Joseph<br>
 **Stack**: `HTML, EJS, CSS, Bootstrap, jQuery, Node.js, Express.js, SQLite`<br>
 **Description**: A blog hosting website. Users can: create, read, update and delete (**CRUD**) blog entries.
 
